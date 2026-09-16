@@ -200,6 +200,11 @@
   .media img { display: block; width: 100%; max-height: 300px; object-fit: cover; }
   .media.contain { padding: 14px 28px; }
   .media.contain img { object-fit: contain; max-height: 260px; background: #f3f3f3; border-radius: 10px; }
+  .media.grid4 { padding: 14px 14px 10px; }
+  .media.grid4 .tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+  .media.grid4 .tiles img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 12px; box-shadow: var(--shadow); display: block; max-height: none; background: none; }
+  .media.grid4 figcaption { padding: 8px 18px 4px; }
+  @media (max-width: 720px) { .media.grid4 .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   .media.phone img { max-height: 280px; width: auto; margin: 0 auto; border-radius: 18px; box-shadow: var(--shadow); background: none; }
   .media figcaption { font-size: 13.5px; color: var(--ink); padding: 8px 32px 10px; letter-spacing: 0; }
   .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: -4px; }
@@ -364,9 +369,14 @@
     <div class="projects">
 
       <article class="card" id="chaekdam">
-        <figure class="media contain phone" style="margin-bottom:4px">
-          <img src="assets/chaekdam-app.jpg" alt="책담 앱 홈 화면 — AI 독서 파트너 담이가 오늘 어떤 책 이야기를 나눌지 묻는다" width="720" height="1283" loading="lazy">
-          <figcaption>홈 화면 — 사용자가 만든 AI 독서 파트너 "담이"와 책 이야기를 시작한다</figcaption>
+        <figure class="media grid4" style="margin-bottom:4px">
+          <div class="tiles">
+            <img src="assets/chaekdam-1-library.jpg" alt="책담 도서관 — 친구들의 담이가 각자 읽는 책과 함께 한 방에 모여 있는 화면" width="720" height="900" loading="lazy">
+            <img src="assets/chaekdam-2-ocr.jpg" alt="책담 문장 인식 — 책 페이지를 찍어 형광펜 긋듯 문장을 고르는 화면" width="720" height="900" loading="lazy">
+            <img src="assets/chaekdam-3-postcard.jpg" alt="책담 독서 엽서 — 읽은 시간과 책, 사진이 한 장의 엽서로 기록된 화면" width="720" height="900" loading="lazy">
+            <img src="assets/chaekdam-4-dami.jpg" alt="책담 담이 — AI 독서 파트너 담이와 오늘 읽은 부분을 이야기하는 화면" width="720" height="900" loading="lazy">
+          </div>
+          <figcaption>도서관 방 · 문장 인식 · 독서 엽서 · 담이와 대화 — 친구들과 같이 읽고, 찍어서 남기고, 담이와 이야기한다</figcaption>
         </figure>
         <div class="card-head">
           <div class="meta"><span>2026.05–2026.12&nbsp;·&nbsp;AI·SW 마에스트로 17기&nbsp;·&nbsp;</span><span class="live">운영 중</span></div>
@@ -508,7 +518,7 @@
           <dd class="result">다섯 단계 사이즈 변화를 표현하는 Virtual Try-On 구현 · UGRP 활동 우수상</dd>
         </dl>
         <div class="links">
-          <a href="assets/2024-UGRP-report.pdf" target="_blank" rel="noopener">연구 보고서 (PDF)</a>
+          <a href="assets/2024-UGRP-report-v2.pdf" target="_blank" rel="noopener">연구 보고서 (PDF)</a>
         </div>
         <details>
           <summary><span class="plus">+</span><span class="label"></span></summary>
