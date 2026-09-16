@@ -459,8 +459,8 @@
 
       <article class="card" id="modu">
         <figure class="media" style="margin-bottom:4px">
-          <img src="assets/modu-map.jpg" alt="모두의 코스 — 경주 지도 위에 추천 코스 8곳이 동선으로 연결된 화면" width="604" height="254" loading="lazy">
-          <figcaption>추천 코스 화면 — 구성원 취향 비율로 배분한 8곳을 권역별 동선으로 연결한다</figcaption>
+          <img src="assets/modu-course-live.jpg" alt="모두의 코스 — 생성된 경주 당일 코스: 지도 위 6곳 동선, 참여 구성원과 취향 분포" width="1250" height="810" loading="lazy">
+          <figcaption>생성된 코스 화면(라이브 캡처) — 구성원 취향 비율로 배분한 6곳을 동선으로 연결하고, 취향 분포와 근처 추천을 함께 보여준다</figcaption>
         </figure>
         <div class="card-head">
           <div class="meta">2026&nbsp;·&nbsp;관광데이터 활용 공모전 출품작</div>
@@ -526,7 +526,7 @@
             <div class="detail-group">
               <h4>구현한 기술</h4>
               <ul class="detail">
-                <li><strong>Stable Diffusion 인페인팅 모델 변형 · fine-tuning</strong> — LaDI-VTON 논문 방식으로 SD 인페인팅 모델에 parse map · 포즈맵 · 워핑 의상 채널을 추가하고 첫 합성곱 층을 0 초기화로 확장, VITON-HD로 300k iteration fine-tuning</li>
+                <li><strong>Stable Diffusion 인페인팅 모델 변형 · fine-tuning</strong> — LaDI-VTON 논문 방식으로 SD 인페인팅 모델에 사람 스켈레톤(포즈 맵) · 세그멘테이션 맵 · 워핑 의상 채널을 추가하고 첫 합성곱 층을 0 초기화로 확장, VITON-HD로 300k iteration fine-tuning</li>
                 <li><strong>cloth warping 전처리</strong> — 의류 랜드마크 예측 → 세분화 마스크 → 부위별 호모그래피 변형. 신체 비율(상체 길이 / 어깨 너비)로 워핑 비율을 조절해 다섯 단계 사이즈 표현</li>
               </ul>
             </div>
@@ -534,7 +534,7 @@
               <h4>해결한 문제</h4>
               <ul class="detail">
                 <li><strong>전체 재학습이 어려운 자원</strong> — 연구실 24GB 서버에서는 추론만으로 메모리가 거의 찼고 사이즈 라벨이 붙은 데이터도 없었다. 모델을 새로 만드는 대신 입력 조건과 전처리로 사이즈 축을 넣어 학습을 채널 확장 fine-tuning 한 번으로 줄이고, 그 학습만 RunPod 48GB 인스턴스에서 돌렸다</li>
-                <li><strong>옷 크기가 바뀌지 않는 문제</strong> — parse map만 수정하면 사람 형태는 바뀌어도 옷 크기 변화가 부족했다. 옷 자체를 변형하는 cloth warping을 앞단에 넣어 사이즈 차이가 결과에 드러나게 했다</li>
+                <li><strong>옷 크기가 바뀌지 않는 문제</strong> — 세그멘테이션 맵의 옷 영역을 팽창·침식해 입력을 바꿔도 옷 크기 변화가 충분하지 않았다. 옷 자체를 변형하는 cloth warping을 앞단에 넣어 사이즈 차이가 결과에 드러나게 했다</li>
               </ul>
             </div>
           </div>
