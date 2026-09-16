@@ -88,6 +88,10 @@
     font-weight: 600;
     letter-spacing: -0.01em;
   }
+  .tagline {
+    margin: -12px 0 26px; max-width: 34em;
+    font-size: 16.5px; line-height: 1.65; color: var(--ink-2);
+  }
   .edu {
     list-style: none; margin: 0 0 28px; padding: 0;
     display: flex; flex-direction: column; gap: 4px;
@@ -185,6 +189,40 @@
     padding: 4px 11px; border-radius: 999px; line-height: 1.5;
   }
 
+  /* ---------- card media + links ---------- */
+  .media {
+    margin: -30px -32px 4px;
+    border-radius: var(--radius) var(--radius) 0 0;
+    border-bottom: 1px solid var(--line);
+    background: var(--chip);
+    overflow: hidden;
+  }
+  .media img { display: block; width: 100%; max-height: 300px; object-fit: cover; }
+  .media.contain { padding: 22px 28px; }
+  .media.contain img { object-fit: contain; max-height: 260px; background: #f3f3f3; border-radius: 10px; }
+  .media svg { display: block; width: 100%; height: auto; }
+  .media figcaption { font-size: 12.5px; color: var(--ink-3); padding: 8px 32px 10px; letter-spacing: 0; }
+  .arch text { font-family: inherit; fill: var(--ink); }
+  .arch .box { fill: var(--surface); stroke: var(--line); stroke-width: 1.2; }
+  .arch .box.mine { stroke: var(--accent); stroke-width: 1.6; }
+  .arch .db { fill: var(--chip); stroke: var(--line); stroke-width: 1.2; }
+  .arch .t1 { font-size: 13px; font-weight: 700; }
+  .arch .t2 { font-size: 10.5px; fill: var(--ink-2); }
+  .arch .lbl { font-size: 10px; fill: var(--ink-3); }
+  .arch .edge { stroke: var(--ink-3); stroke-width: 1.3; fill: none; }
+  .arch .edge.back { stroke-dasharray: 4 3; }
+  .arch .edge.db { stroke: var(--line); stroke-width: 1.2; fill: none; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: -4px; }
+  .links a {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 13px; border-radius: 999px; font-size: 13.5px; font-weight: 600;
+    border: 1px solid var(--line); color: var(--ink);
+    transition: border-color .15s, background .15s;
+  }
+  .links a:hover { border-color: var(--accent); background: var(--accent-soft); }
+  .links a::after { content: "↗"; color: var(--ink-3); font-size: 12px; }
+  .links a:hover::after { color: var(--accent); }
+
   /* ---------- detail toggle ---------- */
   .card details { border-top: 1px dashed var(--line); padding-top: 6px; margin-top: 2px; }
   .card summary {
@@ -234,6 +272,9 @@
     .photo { width: 168px; order: -1; transform: rotate(-1.5deg); }
     .edu .when { width: 130px; font-size: 12.5px; }
     .card { padding: 24px 22px 18px; }
+    .media { margin: -24px -22px 2px; }
+    .media.contain { padding: 14px 16px; }
+    .media figcaption { padding: 6px 22px 8px; }
     .card-head h3 { font-size: 21px; }
     .card-head h3 .sub { display: block; font-size: 16px; margin-top: 2px; }
     .card-head h3 .sub::before { content: ""; }
@@ -252,7 +293,7 @@
     }
     html, body { background: #fff; font-size: 10.5pt; line-height: 1.5; }
     .wrap { max-width: none; padding: 0; }
-    .top, .actions, footer, .section-head .count, .card details { display: none !important; }
+    .top, .actions, footer, .section-head .count, .card details, .media, .links, .tagline { display: none !important; }
     .hero { grid-template-columns: 1fr auto; gap: 24px; padding: 0 0 14pt; align-items: start; }
     .hero h1 { font-size: 22pt; margin-bottom: 2pt; }
     .hero .role { font-size: 12pt; margin-bottom: 10pt; }
@@ -297,6 +338,7 @@
     <div>
       <h1>김창규</h1>
       <p class="role">Backend / AI Service Engineer</p>
+      <p class="tagline">API 개발부터 AI 워크플로 통합, 서비스 출시와 운영 문제 해결까지 경험한 개발자입니다.</p>
 
       <ul class="edu">
         <li><span class="when">2020.02–2026.08</span><span>DGIST Computer Science Track</span></li>
@@ -331,7 +373,13 @@
 
     <div class="projects">
 
-      <article class="card">
+      <article class="card" id="chaekdam">
+        <!-- 책담 실제 앱 화면: assets/chaekdam-app.jpg 준비되면 아래 주석을 풀고 App Store 링크를 채운다
+        <figure class="media" style="margin-bottom:4px">
+          <img src="assets/chaekdam-app.jpg" alt="책담 앱 — 도서관 방 화면" loading="lazy">
+          <figcaption>도서관 방 — 같이 읽고 있는 사람의 독서 상태가 실시간으로 보인다</figcaption>
+        </figure>
+        -->
         <div class="card-head">
           <div class="meta"><span>2026.05–2026.12&nbsp;·&nbsp;AI·SW 마에스트로 17기&nbsp;·&nbsp;</span><span class="live">운영 중</span></div>
           <h3>책담<span class="sub">독서 전 과정을 함께하는 서비스</span></h3>
@@ -344,6 +392,11 @@
           <dt>Result</dt>
           <dd class="result">App Store 출시(2026.09) · Play Store 출시 대기 중, 운영 중</dd>
         </dl>
+        <!-- App Store URL 확정되면 주석 해제
+        <div class="links">
+          <a href="#" target="_blank" rel="noopener">App Store</a>
+        </div>
+        -->
         <details>
           <summary><span class="plus">+</span><span class="label"></span></summary>
           <div class="detail-body">
@@ -359,9 +412,9 @@
             <div class="detail-group">
               <h4>해결한 문제</h4>
               <ul class="detail">
-                <li><strong>90초 만료 판정 폐기</strong> — 상태 게시가 90초 끊기면 "읽지 않음"으로 판정하던 설계였는데, iOS는 화면만 꺼도 게시가 멈춰 책 읽느라 폰을 엎어 둔 사용자가 오히려 방에서 사라졌다. 시간을 늘리는 건 근거 없는 숫자로 문제를 미루는 것이라 판단해 판정 자체를 폐기하고 사용자가 설정한 상태를 유지, 앱 재시작 시 1회 게시로 잔존 상태를 정리. 강제 종료 시 상태가 잠시 남는 대가는 문서화</li>
+                <li><strong>90초 만료 판정 폐기</strong> — 상태 게시가 90초 끊기면 "읽지 않음"으로 판정하던 설계였는데, iOS는 화면만 꺼도 게시가 멈춰 책을 읽느라 화면을 끈 사용자가 "읽지 않음"으로 표시됐다. 시간을 늘리는 건 근거 없는 숫자로 문제를 미루는 것이라 판단해 판정 자체를 폐기하고 사용자가 설정한 상태를 유지, 앱 재시작 시 1회 게시로 잔존 상태를 정리. 강제 종료 시 상태가 잠시 남는 대가는 문서화</li>
                 <li><strong>WebSocket 메시지 레이스</strong> — 내가 보낸 채팅의 WebSocket 사본이 REST 응답보다 먼저 도착해 화면에 중복되는 경합. 클라이언트 메시지 ID 장부를 두고 REST 응답을 정본으로 삼아 덮어쓰도록 해결</li>
-                <li><strong>운영 책 검색 전면 500</strong> — 특정 JPA 쿼리 조합이 운영에서만 무조건 500. 화면 오류 문구로 계층을 좁히고 두 사용자가 동시에 겪는 것으로 코드 결함을 확정한 뒤, Testcontainers로 그 쿼리만 재현해 당일 운영 반영. CI가 못 잡은 이유는 검색만 메모리 DB로 돌았기 때문</li>
+                <li><strong>운영 책 검색 전면 500</strong> — 특정 JPA 쿼리 조합이 운영에서만 무조건 500. 화면 오류 문구로 계층을 좁히고, 두 사용자에게 같이 발생한 점을 근거로 공통 서버 문제로 범위를 좁힌 뒤 Testcontainers로 그 쿼리만 재현해 원인을 확인하고 당일 운영 반영. CI가 못 잡은 이유는 검색만 메모리 DB로 돌았기 때문</li>
                 <li><strong>RDS 비밀번호 자동 회전</strong> — 아무도 바꾸지 않았는데 DB 인증 실패. 커넥션 풀 고갈처럼 보였지만 아래 계층의 인증 오류였고, Secrets Manager 7일 자동 회전이 원인. 앱이 시크릿을 직접 읽는 JDBC 드라이버로 바꿔 낡은 비밀번호가 생길 자리를 구조에서 없앰</li>
               </ul>
             </div>
@@ -369,7 +422,62 @@
         </details>
       </article>
 
-      <article class="card">
+      <article class="card" id="polaris">
+        <figure class="media contain" style="margin-bottom:4px">
+          <svg class="arch" viewBox="0 0 760 290" role="img" aria-label="Polaris 서버 구성도 — Spring Boot, FastAPI + LangGraph, ModelOps 세 서버와 두 개의 PostgreSQL">
+            <defs>
+              <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0 0 L10 5 L0 10 z" fill="var(--ink-3)"/>
+              </marker>
+            </defs>
+            <!-- Frontend -->
+            <rect class="box" x="12" y="52" width="84" height="56" rx="10"/>
+            <text class="t1" x="54" y="76" text-anchor="middle">Frontend</text>
+            <text class="t2" x="54" y="94" text-anchor="middle">React</text>
+            <!-- Spring Boot -->
+            <rect class="box mine" x="138" y="40" width="168" height="80" rx="12"/>
+            <text class="t1" x="222" y="66" text-anchor="middle">Spring Boot · 8080</text>
+            <text class="t2" x="222" y="86" text-anchor="middle">JWT 인증 · 사업장 CRUD</text>
+            <text class="t2" x="222" y="102" text-anchor="middle">분석 작업 상태 · 게이트웨이</text>
+            <!-- FastAPI -->
+            <rect class="box mine" x="356" y="40" width="180" height="80" rx="12"/>
+            <text class="t1" x="446" y="66" text-anchor="middle">FastAPI + LangGraph · 8000</text>
+            <text class="t2" x="446" y="86" text-anchor="middle">7노드 워크플로 · Validator</text>
+            <text class="t2" x="446" y="102" text-anchor="middle">Qdrant RAG → TCFD 보고서</text>
+            <!-- ModelOps -->
+            <rect class="box" x="586" y="40" width="162" height="80" rx="12"/>
+            <text class="t1" x="667" y="66" text-anchor="middle">ModelOps · 8001</text>
+            <text class="t2" x="667" y="86" text-anchor="middle">H·E·V·AAL 계산 엔진</text>
+            <text class="t2" x="667" y="102" text-anchor="middle">45만 격자 × 9종 리스크</text>
+            <!-- forward edges -->
+            <path class="edge" d="M96 80 H138" marker-end="url(#ah)"/>
+            <path class="edge" d="M306 70 H356" marker-end="url(#ah)"/>
+            <text class="lbl" x="331" y="62" text-anchor="middle">REST</text>
+            <path class="edge" d="M536 70 H586" marker-end="url(#ah)"/>
+            <text class="lbl" x="561" y="62" text-anchor="middle">REST</text>
+            <!-- callbacks -->
+            <path class="edge back" d="M356 96 H306" marker-end="url(#ah)"/>
+            <text class="lbl" x="331" y="112" text-anchor="middle">콜백</text>
+            <path class="edge back" d="M586 96 H536" marker-end="url(#ah)"/>
+            <text class="lbl" x="561" y="112" text-anchor="middle">콜백</text>
+            <!-- DB bus -->
+            <path class="edge db" d="M222 120 V172 M446 120 V172 M667 120 V172 M222 172 H667 M300 172 V206 M540 172 V206"/>
+            <!-- Application DB -->
+            <rect class="db" x="212" y="206" width="176" height="62" rx="12"/>
+            <text class="t1" x="300" y="232" text-anchor="middle">Application DB</text>
+            <text class="t2" x="300" y="251" text-anchor="middle">PostgreSQL · 사업장 · 작업 · 보고서</text>
+            <!-- Datawarehouse -->
+            <rect class="db" x="452" y="206" width="176" height="62" rx="12"/>
+            <text class="t1" x="540" y="232" text-anchor="middle">Datawarehouse</text>
+            <text class="t2" x="540" y="251" text-anchor="middle">PostgreSQL + PostGIS · 격자 계산 결과</text>
+            <!-- legend -->
+            <rect x="652" y="226" width="12" height="12" rx="3" class="box mine"/>
+            <text class="lbl" x="670" y="236">직접 구현 · 설계</text>
+            <line x1="652" y1="254" x2="664" y2="254" class="edge back"/>
+            <text class="lbl" x="670" y="258">완료 콜백</text>
+          </svg>
+          <figcaption>세 서버와 데이터 흐름 — 계산(ModelOps)과 해석(LangGraph)을 분리하고 결과는 DB로 주고받는다</figcaption>
+        </figure>
         <div class="card-head">
           <div class="meta">2025.07–2025.12&nbsp;·&nbsp;SKALA 2기 최종 프로젝트</div>
           <h3>Polaris<span class="sub">기후 리스크 분석 · AI 보고서 생성</span></h3>
@@ -404,7 +512,11 @@
         </details>
       </article>
 
-      <article class="card">
+      <article class="card" id="modu">
+        <figure class="media" style="margin-bottom:4px">
+          <img src="assets/modu-map.jpg" alt="모두의 코스 — 경주 지도 위에 추천 코스 8곳이 동선으로 연결된 화면" width="604" height="254" loading="lazy">
+          <figcaption>추천 코스 화면 — 구성원 취향 비율로 배분한 8곳을 권역별 동선으로 연결한다</figcaption>
+        </figure>
         <div class="card-head">
           <div class="meta">2026&nbsp;·&nbsp;관광데이터 활용 공모전 출품작</div>
           <h3>모두의 코스<span class="sub">공공데이터 기반 그룹 여행 플래너</span></h3>
@@ -415,8 +527,11 @@
           <dt>Role</dt>
           <dd>풀스택 개발</dd>
           <dt>Result</dt>
-          <dd class="result">초대 링크 하나로 그룹 취향을 모아 경주 당일 코스를 만드는 서비스 배포 (modu-course.vercel.app)</dd>
+          <dd class="result">초대 링크 하나로 그룹 취향을 모아 경주 당일 코스를 만드는 서비스 배포</dd>
         </dl>
+        <div class="links">
+          <a href="https://modu-course.vercel.app" target="_blank" rel="noopener">서비스 열기</a>
+        </div>
         <details>
           <summary><span class="plus">+</span><span class="label"></span></summary>
           <div class="detail-body">
@@ -440,7 +555,11 @@
         </details>
       </article>
 
-      <article class="card">
+      <article class="card" id="vton">
+        <figure class="media contain" style="margin-bottom:4px">
+          <img src="assets/vton-sizes.jpg" alt="같은 인물·같은 의류에 warping 비율 x0.6부터 x1.4까지 다섯 단계를 적용한 Virtual Try-On 결과" width="1095" height="372" loading="lazy">
+          <figcaption>동일 인물·의류의 다섯 단계 사이즈 비교 (warping 비율 x0.6 → x1.4)</figcaption>
+        </figure>
         <div class="card-head">
           <div class="meta">2023.12–2024.12&nbsp;·&nbsp;DGIST</div>
           <h3>Size-Aware Virtual Try-On<span class="sub">UGRP 학부생 연구</span></h3>
@@ -453,6 +572,11 @@
           <dt>Result</dt>
           <dd class="result">다섯 단계 사이즈 변화를 표현하는 Virtual Try-On 구현 · UGRP 활동 우수상</dd>
         </dl>
+        <!-- 연구 자료 링크 확정되면 주석 해제
+        <div class="links">
+          <a href="#" target="_blank" rel="noopener">연구 자료</a>
+        </div>
+        -->
         <details>
           <summary><span class="plus">+</span><span class="label"></span></summary>
           <div class="detail-body">
