@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>김창규 — Backend / AI Service Engineer</title>
+<meta name="description" content="김창규 포트폴리오 — Backend / AI Service Engineer. 책담 · Polaris · 모두의 코스 · Size-Aware Virtual Try-On">
+<meta property="og:title" content="김창규 — Backend / AI Service Engineer">
+<meta property="og:description" content="책담 · Polaris · 모두의 코스 · Size-Aware Virtual Try-On">
+<meta property="og:image" content="assets/photo.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%231d3557'/><text x='50' y='68' font-size='52' font-family='sans-serif' font-weight='700' text-anchor='middle' fill='white'>K</text></svg>">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --surface: #ffffff;
+    --ink: #17181c;
+    --ink-2: #4a4d55;
+    --ink-3: #8a8d95;
+    --line: #e4e1da;
+    --accent: #1d3557;
+    --accent-soft: #e8eef7;
+    --chip: #f1efe9;
+    --shadow: 0 1px 2px rgba(20,20,30,.04), 0 12px 32px -16px rgba(20,20,30,.18);
+    --radius: 18px;
+    --measure: 880px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101114;
+      --surface: #17181d;
+      --ink: #f2f1ec;
+      --ink-2: #b9bbc2;
+      --ink-3: #7c7f88;
+      --line: #262830;
+      --accent: #a9c4ee;
+      --accent-soft: #1c2536;
+      --chip: #1f2128;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 16px 40px -20px rgba(0,0,0,.7);
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: var(--measure); margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- top bar ---------- */
+  .top {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 0 0;
+    font-size: 14px; color: var(--ink-3);
+  }
+  .top .mark { font-weight: 700; color: var(--ink); letter-spacing: 0; }
+  .top nav { display: flex; gap: 20px; }
+  .top nav a:hover { color: var(--ink); }
+
+  /* ---------- hero ---------- */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: end;
+    padding: 72px 0 56px;
+  }
+  .hero h1 {
+    margin: 0 0 8px;
+    font-size: clamp(40px, 7vw, 60px);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    font-weight: 800;
+  }
+  .hero .role {
+    margin: 0 0 26px;
+    font-size: clamp(18px, 2.6vw, 22px);
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .edu {
+    list-style: none; margin: 0 0 28px; padding: 0;
+    display: flex; flex-direction: column; gap: 4px;
+    color: var(--ink-2); font-size: 15px;
+  }
+  .edu li { display: flex; gap: 14px; align-items: baseline; }
+  .edu .when {
+    flex: 0 0 auto; width: 150px;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-3); font-size: 13.5px; letter-spacing: 0;
+  }
+  .contact { display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: 14.5px; color: var(--ink-2); }
+  .contact a { border-bottom: 1px solid var(--line); transition: border-color .15s, color .15s; }
+  .contact a:hover { color: var(--ink); border-color: var(--ink); }
+  .photo {
+    width: 224px; aspect-ratio: 4 / 5; overflow: hidden;
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+    background: var(--chip);
+    transform: rotate(1.5deg);
+  }
+  .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ---------- actions ---------- */
+  .actions { display: flex; gap: 12px; margin-top: 30px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 18px; border-radius: 999px;
+    font-size: 14.5px; font-weight: 600;
+    border: 1px solid var(--line); background: var(--surface);
+    transition: transform .15s, box-shadow .15s, border-color .15s;
+  }
+  .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); border-color: var(--ink-3); }
+  .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  @media (prefers-color-scheme: dark) { .btn.primary { color: #0e1420; } }
+  .btn svg { width: 16px; height: 16px; }
+
+  /* ---------- section ---------- */
+  .section { padding: 40px 0 24px; }
+  .section-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    border-top: 1px solid var(--line);
+    padding-top: 22px; margin-bottom: 26px;
+  }
+  .section-head h2 {
+    margin: 0; font-size: 13px; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3);
+  }
+  .section-head .count { font-size: 13px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+
+  /* ---------- project card ---------- */
+  .projects { display: grid; gap: 18px; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 30px 32px 28px;
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+  }
+  .card-head { display: flex; flex-direction: column; gap: 6px; }
+  .card-head .meta {
+    font-size: 13.5px; color: var(--ink-3);
+    font-variant-numeric: tabular-nums; letter-spacing: 0;
+    display: flex; flex-wrap: wrap; gap: 6px 0;
+  }
+  .card-head .meta .live {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--accent); font-weight: 600;
+  }
+  .card-head .meta .live::before {
+    content: ""; width: 7px; height: 7px; border-radius: 50%;
+    background: currentColor; box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .card-head h3 {
+    margin: 0; font-size: 24px; line-height: 1.3;
+    letter-spacing: -0.025em; font-weight: 750;
+  }
+  .card-head h3 .sub { color: var(--ink-2); font-weight: 500; }
+  .card-head h3 .sub::before { content: " — "; color: var(--ink-3); }
+
+  .rows { display: grid; grid-template-columns: 76px minmax(0, 1fr); row-gap: 12px; column-gap: 18px; align-items: baseline; }
+  .rows dt {
+    font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--ink-3); padding-top: 3px;
+  }
+  .rows dd { margin: 0; font-size: 16.5px; color: var(--ink); }
+  .rows dd.result { font-weight: 600; }
+  .chips { display: flex; flex-wrap: wrap; gap: 7px; }
+  .chip {
+    font-size: 13.5px; font-weight: 500; letter-spacing: 0;
+    background: var(--chip); color: var(--ink-2);
+    padding: 4px 11px; border-radius: 999px; line-height: 1.5;
+  }
+
+  /* ---------- footer ---------- */
+  footer {
+    margin-top: 64px; padding: 28px 0 44px;
+    border-top: 1px solid var(--line);
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 20px;
+    font-size: 13.5px; color: var(--ink-3);
+  }
+  footer .contact { font-size: 13.5px; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 720px) {
+    .hero { grid-template-columns: 1fr; gap: 28px; padding: 44px 0 40px; }
+    .photo { width: 168px; order: -1; transform: rotate(-1.5deg); }
+    .edu .when { width: 130px; font-size: 12.5px; }
+    .card { padding: 24px 22px 22px; }
+    .card-head h3 { font-size: 21px; }
+    .card-head h3 .sub { display: block; font-size: 16px; margin-top: 2px; }
+    .card-head h3 .sub::before { content: ""; }
+    .rows { grid-template-columns: 1fr; row-gap: 4px; }
+    .rows dt { margin-top: 10px; }
+    .rows dt:first-child { margin-top: 0; }
+    .actions { flex-wrap: wrap; }
+  }
+
+  /* ---------- print (A4 1장) ---------- */
+  @media print {
+    @page { size: A4; margin: 16mm 18mm; }
+    :root {
+      --bg: #fff; --surface: #fff; --ink: #111; --ink-2: #444; --ink-3: #777;
+      --line: #ddd; --accent: #1d3557; --chip: #f1f1f1; --shadow: none;
+    }
+    html, body { background: #fff; font-size: 10.5pt; line-height: 1.5; }
+    .wrap { max-width: none; padding: 0; }
+    .top, .actions, footer, .section-head .count { display: none !important; }
+    .hero { grid-template-columns: 1fr auto; gap: 24px; padding: 0 0 14pt; align-items: start; }
+    .hero h1 { font-size: 22pt; margin-bottom: 2pt; }
+    .hero .role { font-size: 12pt; margin-bottom: 10pt; }
+    .edu { font-size: 9.5pt; gap: 0; margin-bottom: 8pt; }
+    .edu .when { width: 110pt; font-size: 9pt; }
+    .contact { font-size: 9.5pt; gap: 4pt 14pt; }
+    .contact a { border: 0; }
+    .photo { width: 78pt; border-radius: 6pt; transform: none; }
+    .section { padding: 0; }
+    .section-head { padding-top: 10pt; margin-bottom: 10pt; }
+    .section-head h2 { font-size: 8.5pt; }
+    .projects { gap: 0; }
+    .card {
+      border: 0; border-top: 1px solid var(--line); border-radius: 0;
+      padding: 10pt 0 10pt; gap: 6pt; box-shadow: none;
+      break-inside: avoid; page-break-inside: avoid;
+    }
+    .card:first-child { border-top: 0; padding-top: 0; }
+    .card-head h3 { font-size: 13pt; }
+    .card-head .meta { font-size: 9pt; }
+    .rows { grid-template-columns: 52pt 1fr; row-gap: 2pt; column-gap: 10pt; }
+    .rows dt { font-size: 8pt; padding-top: 1.5pt; }
+    .rows dd { font-size: 10.5pt; }
+    .chips { gap: 0; }
+    .chip { background: none; padding: 0; font-size: 10.5pt; color: var(--ink); }
+    .chip + .chip::before { content: "·"; color: var(--ink-3); margin: 0 .4em; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <a class="mark" href="#">김창규</a>
+    <nav>
+      <a href="#projects">Projects</a>
+      <a href="mailto:89606590659@naver.com">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h1>김창규</h1>
+      <p class="role">Backend / AI Service Engineer</p>
+
+      <ul class="edu">
+        <li><span class="when">2020.03–2026.08</span><span>DGIST Computer Science Track</span></li>
+        <li><span class="when">2025.07–2025.12</span><span>SKALA 2기</span></li>
+        <li><span class="when">2026.05–2026.12</span><span>AI·SW 마에스트로 17기</span></li>
+      </ul>
+
+      <div class="contact">
+        <a href="mailto:89606590659@naver.com">89606590659@naver.com</a>
+        <a href="https://github.com/Nangmanful" target="_blank" rel="noopener">github.com/Nangmanful</a>
+        <a href="https://velog.io/@nangman_ful" target="_blank" rel="noopener">velog.io/@nangman_ful</a>
+      </div>
+
+      <div class="actions">
+        <a class="btn primary" href="KimChanggyu_Portfolio.pdf" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+          PDF 다운로드
+        </a>
+        <a class="btn" href="#projects">프로젝트 보기</a>
+      </div>
+    </div>
+
+    <figure class="photo" style="margin:0">
+      <img src="assets/photo.jpg" alt="김창규 프로필 사진" width="720" height="900">
+    </figure>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="section-head">
+      <h2>Projects</h2>
+      <span class="count">04</span>
+    </div>
+
+    <div class="projects">
+
+      <article class="card">
+        <div class="card-head">
+          <div class="meta"><span>2026.05–2026.12&nbsp;·&nbsp;AI·SW 마에스트로 17기&nbsp;·&nbsp;</span><span class="live">운영 중</span></div>
+          <h3>책담<span class="sub">독서 전 과정을 함께하는 서비스</span></h3>
+        </div>
+        <dl class="rows">
+          <dt>Stack</dt>
+          <dd><div class="chips"><span class="chip">Spring Boot</span><span class="chip">PostgreSQL</span><span class="chip">WebSocket</span><span class="chip">React Native</span><span class="chip">AWS</span></div></dd>
+          <dt>Role</dt>
+          <dd>백엔드 — 도서관 방 · 참여 상태 기능</dd>
+          <dt>Result</dt>
+          <dd class="result">30초 폴링 → WebSocket 실시간 전환. 배포 후 운영 중</dd>
+        </dl>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <div class="meta">2025.07–2025.12&nbsp;·&nbsp;SKALA 2기 최종 프로젝트</div>
+          <h3>Polaris<span class="sub">기후 리스크 분석 · AI 보고서 생성</span></h3>
+        </div>
+        <dl class="rows">
+          <dt>Stack</dt>
+          <dd><div class="chips"><span class="chip">Spring Boot</span><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">LangGraph</span></div></dd>
+          <dt>Role</dt>
+          <dd>백엔드 팀장 — 서버 3분리 설계 · 연동</dd>
+          <dt>Result</dt>
+          <dd class="result">406만 건 계산과 보고서 생성 연결. 반복 조회 30초 → 1~3초</dd>
+        </dl>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <div class="meta">2026&nbsp;·&nbsp;관광데이터 활용 공모전 출품작</div>
+          <h3>모두의 코스<span class="sub">공공데이터 기반 그룹 여행 플래너</span></h3>
+        </div>
+        <dl class="rows">
+          <dt>Stack</dt>
+          <dd><div class="chips"><span class="chip">Next.js</span><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">TourAPI</span></div></dd>
+          <dt>Role</dt>
+          <dd>풀스택 개발</dd>
+          <dt>Result</dt>
+          <dd class="result">취향을 조율하는 경주 여행 코스 플래너 배포</dd>
+        </dl>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <div class="meta">2023.12–2024.12&nbsp;·&nbsp;DGIST</div>
+          <h3>Size-Aware Virtual Try-On<span class="sub">UGRP 학부생 연구</span></h3>
+        </div>
+        <dl class="rows">
+          <dt>Stack</dt>
+          <dd><div class="chips"><span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">Diffusion</span></div></dd>
+          <dt>Role</dt>
+          <dd>연구팀장 — 주제 제안 · 문제 재정의</dd>
+          <dt>Result</dt>
+          <dd class="result">재학습 없이 전처리에 cloth warping 결합해 사이즈 변화 표현. UGRP 활동 우수상</dd>
+        </dl>
+      </article>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="contact">
+      <a href="mailto:89606590659@naver.com">89606590659@naver.com</a>
+      <a href="https://github.com/Nangmanful" target="_blank" rel="noopener">github.com/Nangmanful</a>
+      <a href="https://velog.io/@nangman_ful" target="_blank" rel="noopener">velog.io/@nangman_ful</a>
+    </div>
+    <div>© 2026 김창규</div>
+  </footer>
+
+</div>
+</body>
+</html>
