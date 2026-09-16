@@ -526,13 +526,14 @@
             <div class="detail-group">
               <h4>구현한 기술</h4>
               <ul class="detail">
-                <li><strong>Stable Diffusion 인페인팅 모델 변형 · fine-tuning</strong> — LaDI-VTON 논문의 방식을 따라 Stable Diffusion 인페인팅 모델을 변형했다. 연구실 서버(VRAM 24GB)에서는 추론만으로 메모리를 거의 써 전체 재학습이 어려웠고, parse map · skeleton(포즈맵) · 워핑 의상을 입력 조건으로 추가하고 첫 합성곱 층 채널을 0으로 초기화해 확장한 뒤, RunPod 48GB 인스턴스에서 VITON-HD로 사전학습 모델을 fine-tuning(300k iteration)</li>
-                <li><strong>cloth warping 전처리</strong> — 이전 GAN 계열 연구의 cloth warping을 전처리 단계에 결합해 다섯 단계 사이즈 변화를 표현</li>
+                <li><strong>Stable Diffusion 인페인팅 모델 변형 · fine-tuning</strong> — LaDI-VTON 논문 방식으로 SD 인페인팅 모델에 parse map · 포즈맵 · 워핑 의상 채널을 추가하고 첫 합성곱 층을 0 초기화로 확장, VITON-HD로 300k iteration fine-tuning</li>
+                <li><strong>cloth warping 전처리</strong> — 의류 랜드마크 예측 → 세분화 마스크 → 부위별 호모그래피 변형. 신체 비율(상체 길이 / 어깨 너비)로 워핑 비율을 조절해 다섯 단계 사이즈 표현</li>
               </ul>
             </div>
             <div class="detail-group">
               <h4>해결한 문제</h4>
               <ul class="detail">
+                <li><strong>전체 재학습이 어려운 자원</strong> — 연구실 24GB 서버에서는 추론만으로 메모리가 거의 찼고 사이즈 라벨이 붙은 데이터도 없었다. 모델을 새로 만드는 대신 입력 조건과 전처리로 사이즈 축을 넣어 학습을 채널 확장 fine-tuning 한 번으로 줄이고, 그 학습만 RunPod 48GB 인스턴스에서 돌렸다</li>
                 <li><strong>옷 크기가 바뀌지 않는 문제</strong> — parse map만 수정하면 사람 형태는 바뀌어도 옷 크기 변화가 부족했다. 옷 자체를 변형하는 cloth warping을 앞단에 넣어 사이즈 차이가 결과에 드러나게 했다</li>
               </ul>
             </div>
