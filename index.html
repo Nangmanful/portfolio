@@ -526,7 +526,7 @@
             <div class="detail-group">
               <h4>구현한 기술</h4>
               <ul class="detail">
-                <li><strong>LADI-VTON fine-tuning</strong> — Diffusion 기반 LADI-VTON은 추론만으로 VRAM 24GB를 거의 써 전체 재학습이 어려웠다. parse map · skeleton 등 입력 조건을 보강해 사전학습 모델 위에 fine-tuning하는 방향으로 구현</li>
+                <li><strong>Stable Diffusion 인페인팅 모델 변형 · fine-tuning</strong> — LaDI-VTON 논문의 방식을 따라 Stable Diffusion 인페인팅 모델을 변형했다. 추론만으로 VRAM 24GB를 거의 써 전체 재학습이 어려웠고, parse map · skeleton(포즈맵) · 워핑 의상을 입력 조건으로 추가하고 첫 합성곱 층 채널을 0으로 초기화해 확장한 뒤, VITON-HD로 사전학습 모델을 fine-tuning(300k iteration)</li>
                 <li><strong>cloth warping 전처리</strong> — 이전 GAN 계열 연구의 cloth warping을 전처리 단계에 결합해 다섯 단계 사이즈 변화를 표현</li>
               </ul>
             </div>
